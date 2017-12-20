@@ -20,9 +20,9 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class TrelloClientTest {
-
+/*
     @InjectMocks
     private TrelloClient trelloClient;
 
@@ -105,6 +105,6 @@ public class TrelloClientTest {
         //Then
         assertEquals(0, fetchedTrelloBoards.size());
 
-    }
+    }*/
 
 }
