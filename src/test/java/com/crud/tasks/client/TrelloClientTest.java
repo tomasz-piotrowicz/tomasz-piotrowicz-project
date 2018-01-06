@@ -1,8 +1,28 @@
 package com.crud.tasks.client;
 
-//@RunWith(MockitoJUnitRunner.class)
+import com.crud.tasks.domain.CreatedTrelloCardDto;
+import com.crud.tasks.domain.TrelloBoardDto;
+import com.crud.tasks.domain.TrelloCardDto;
+import com.crud.tasks.trello.config.TrelloConfig;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.web.client.RestTemplate;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
+
+@RunWith(MockitoJUnitRunner.class)
 public class TrelloClientTest {
-/*
+
     @InjectMocks
     private TrelloClient trelloClient;
 
@@ -77,7 +97,7 @@ public class TrelloClientTest {
 
         URI uri = new URI("https://test.com/cards?key=test&token=test&name=Test%20task&desc=Test%20description&pos=top&idList=test_id");
 
-        when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(null);
+        //when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(null);
 
         //When
         List<TrelloBoardDto> fetchedTrelloBoards = trelloClient.getTrelloBoards();
@@ -85,6 +105,6 @@ public class TrelloClientTest {
         //Then
         assertEquals(0, fetchedTrelloBoards.size());
 
-    }*/
+    }
 
 }
