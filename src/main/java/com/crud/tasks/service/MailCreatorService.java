@@ -6,11 +6,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import static java.time.LocalTime.now;
 
 @Service
@@ -33,7 +30,7 @@ public class MailCreatorService {
         context.setVariable("message", message);
         context.setVariable("tasks_url", "http://localhost:8888/crud");
         context.setVariable("button", "Visit webstite");
-        context.setVariable("admin_name", adminConfig.getAdminMail());
+        context.setVariable("admin_name", adminConfig.getAdminName());
         context.setVariable("owner", adminConfig.getOwnerName() + " " + adminConfig.getOwnerSurname());
         context.setVariable("company", adminConfig.getCompanyName());
         context.setVariable("show_button", false);
@@ -47,7 +44,7 @@ public class MailCreatorService {
 
         Context context = new Context();
         context.setVariable("message", message);
-        context.setVariable("admin_name", adminConfig.getAdminMail());
+        context.setVariable("admin_name", adminConfig.getAdminName());
         context.setVariable("welcome_message", "Your daily tasks report: ");
         context.setVariable("localdate", now());
         return templateEngine.process("mail/tasks-information-mail", context);

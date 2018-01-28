@@ -22,16 +22,28 @@ public class SimpleEmailService {
     @Autowired
     private MailCreatorService mailCreatorService;
 
-    public void send(final Mail mail){
+    public void sendTrelloMail(final Mail mail){
         LOGGER.info("Starting email preparation...");
         try {
-            SimpleMailMessage mailMessage = createMailMessage(mail);
             javaMailSender.send(createMimeMessage(mail));
             LOGGER.info("Email has been sent.");
         } catch (MailException e){
             LOGGER.error("Failed to process email sending: " + e.getMessage(), e);
         }
     }
+
+    public void sendTaskMail(final Mail mail){
+        LOGGER.info("Starting email preparation...");
+        try {
+            SimpleMailMessage mailMessage = createMailMessage(mail);
+            javaMailSender.send(mailMessage);
+            LOGGER.info("Email has been sent.");
+        } catch (MailException e){
+            LOGGER.error("Failed to process email sending: " + e.getMessage(), e);
+        }
+    }
+
+
 
     private MimeMessagePreparator createMimeMessage(final Mail mail) {
         return mimeMessage -> {
@@ -49,7 +61,7 @@ public class SimpleEmailService {
             mailMessage.setCc(mail.getToCc());
         }
         mailMessage.setSubject(mail.getSubject());
-        mailMessage.setText(mail.getMessage());
+        mailMessage.setText(mailCreatorService.buildTaskInfoEmail(mail.getMessage()));
         return mailMessage;
     }
 }
