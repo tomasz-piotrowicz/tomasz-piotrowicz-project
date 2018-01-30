@@ -33,5 +33,4 @@ public class EmailScheduler {
                 SUBJECT,
                 "Currently in database you got: " + size + message));
     }
-
 }
